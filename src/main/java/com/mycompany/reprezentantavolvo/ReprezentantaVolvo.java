@@ -12,7 +12,7 @@ public class ReprezentantaVolvo {
             System.out.println("connection.isValid(0) = " + connection.isValid(0));
             
             ClientiDAO clientiDAO = new ClientiDAO(connection);
-            List<Clienti> clientiGasiti = clientiDAO.cautaClientiDupaNume("Robert1");
+            List<Clienti> clientiGasiti = clientiDAO.cautaClientiDupaNume("Robert");
             
             for (Clienti c : clientiGasiti){
                 System.out.println(c.getCODC() + " - "+c.getNume() + " - "+c.getLocalitate());
