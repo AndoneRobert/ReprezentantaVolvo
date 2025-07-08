@@ -15,20 +15,31 @@ public class MainWindow extends javax.swing.JFrame {
 
     MainMenu menuPanel;
     Stoc stocPanel;
+    Clienti clientiPanel;
+    Service servicePanel;
+    Vehicule vehiculePanel;
+    
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
         initComponents();
         
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setSize(1280, 720);
         setLocationRelativeTo(null);
+        setResizable(false);
         
         menuPanel = new MainMenu(this);
         stocPanel = new Stoc(this);
+        clientiPanel = new Clienti(this);
+        servicePanel = new Service(this);
+        vehiculePanel = new Vehicule(this);
         
         contentPanel.add(menuPanel, "menu");
         contentPanel.add(stocPanel, "stoc");
+        contentPanel.add(clientiPanel, "clienti");
+        contentPanel.add(servicePanel, "service");
+        contentPanel.add(vehiculePanel, "vehicule");
         
         showPanel("menu");
     }
@@ -49,6 +60,13 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         contentPanel = new javax.swing.JPanel();
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setAlignmentX(0.0F);
+        jPanel1.setAlignmentY(0.0F);
+        jPanel1.setMaximumSize(null);
+        jPanel1.setMinimumSize(null);
+        jPanel1.setPreferredSize(null);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -61,8 +79,14 @@ public class MainWindow extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 600));
+        setBackground(new java.awt.Color(255, 255, 255));
+        setMaximumSize(null);
+        setMinimumSize(null);
 
+        contentPanel.setBackground(new java.awt.Color(255, 255, 255));
+        contentPanel.setMaximumSize(null);
+        contentPanel.setMinimumSize(null);
+        contentPanel.setPreferredSize(null);
         contentPanel.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -70,16 +94,16 @@ public class MainWindow extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();

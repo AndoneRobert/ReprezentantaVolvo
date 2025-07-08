@@ -6,23 +6,22 @@ package com.mycompany.reprezentantavolvo.GUI;
 
 import javax.swing.BorderFactory;
 
-
 /**
  *
  * @author robii
  */
-public class Stoc extends javax.swing.JPanel {
-    private MainWindow parent;
+public class Clienti extends javax.swing.JPanel {
+    MainWindow parent;
     /**
-     * Creates new form Stoc
+     * Creates new form Clienti
      */
-    public Stoc(MainWindow parent) {
+    public Clienti(MainWindow parent) {
         this.parent=parent;
         initComponents();
         
-        Home.setBorder(BorderFactory.createEmptyBorder());
-        Home.setContentAreaFilled(false);
-        Home.setFocusPainted(false);
+        Home1.setBorder(BorderFactory.createEmptyBorder());
+        Home1.setContentAreaFilled(false);
+        Home1.setFocusPainted(false);
     }
 
     /**
@@ -34,27 +33,27 @@ public class Stoc extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Home = new javax.swing.JButton();
+        Home1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        Home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/VolvoLogo (1).png"))); // NOI18N
-        Home.setAlignmentY(0.0F);
-        Home.setBorder(null);
-        Home.setMaximumSize(null);
-        Home.setMinimumSize(null);
-        Home.setPreferredSize(null);
-        Home.addMouseListener(new java.awt.event.MouseAdapter() {
+        Home1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/VolvoLogo (1).png"))); // NOI18N
+        Home1.setAlignmentY(0.0F);
+        Home1.setBorder(null);
+        Home1.setMaximumSize(null);
+        Home1.setMinimumSize(null);
+        Home1.setPreferredSize(null);
+        Home1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                HomeMouseEntered(evt);
+                Home1MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                HomeMouseExited(evt);
+                Home1MouseExited(evt);
             }
         });
-        Home.addActionListener(new java.awt.event.ActionListener() {
+        Home1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HomeActionPerformed(evt);
+                Home1ActionPerformed(evt);
             }
         });
 
@@ -62,38 +61,38 @@ public class Stoc extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(488, Short.MAX_VALUE)
-                .addComponent(Home, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(482, 482, 482))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(488, 488, 488)
+                .addComponent(Home1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(482, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Home, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Home1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(669, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
+    private void Home1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Home1MouseEntered
+        // TODO add your handling code here:
+        Home1.setOpaque(true);
+        Home1.setBackground(new java.awt.Color(211, 211, 211));
+    }//GEN-LAST:event_Home1MouseEntered
+
+    private void Home1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Home1MouseExited
+        // TODO add your handling code here:
+        Home1.setOpaque(false);
+    }//GEN-LAST:event_Home1MouseExited
+
+    private void Home1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Home1ActionPerformed
         // TODO add your handling code here:
         parent.showPanel("menu");
-    }//GEN-LAST:event_HomeActionPerformed
-
-    private void HomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseEntered
-        // TODO add your handling code here:
-        Home.setOpaque(true);
-        Home.setBackground(new java.awt.Color(211, 211, 211));
-    }//GEN-LAST:event_HomeMouseEntered
-
-    private void HomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseExited
-        // TODO add your handling code here:
-        Home.setOpaque(false);
-    }//GEN-LAST:event_HomeMouseExited
+    }//GEN-LAST:event_Home1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Home;
+    private javax.swing.JButton Home1;
     // End of variables declaration//GEN-END:variables
 }

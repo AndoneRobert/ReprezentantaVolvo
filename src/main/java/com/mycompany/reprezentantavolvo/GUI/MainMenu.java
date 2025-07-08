@@ -4,7 +4,9 @@
  */
 package com.mycompany.reprezentantavolvo.GUI;
 
-import java.awt.*;
+import javax.swing.*;
+
+
 
 /**
  *
@@ -18,6 +20,23 @@ public class MainMenu extends javax.swing.JPanel {
     public MainMenu(MainWindow parent) {
         this.parent=parent;
         initComponents();
+        Stoc.setBorder(BorderFactory.createEmptyBorder());
+        Stoc.setContentAreaFilled(false);
+        Stoc.setFocusPainted(false);
+        
+        Clienti.setBorder(BorderFactory.createEmptyBorder());
+        Clienti.setContentAreaFilled(false);
+        Clienti.setFocusPainted(false);
+        
+        Service.setBorder(BorderFactory.createEmptyBorder());
+        Service.setContentAreaFilled(false);
+        Service.setFocusPainted(false);
+        
+        Vehicule.setBorder(BorderFactory.createEmptyBorder());
+        Vehicule.setContentAreaFilled(false);
+        Vehicule.setFocusPainted(false);
+        
+
     }
 
     /**
@@ -29,12 +48,93 @@ public class MainMenu extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Vehicule = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        Service = new javax.swing.JButton();
         Stoc = new javax.swing.JButton();
+        Clienti = new javax.swing.JButton();
 
-        Stoc.setText("Stoc");
+        setBackground(new java.awt.Color(255, 255, 255));
+        setAlignmentX(0.0F);
+        setAlignmentY(0.0F);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(null);
+        setMinimumSize(null);
+
+        Vehicule.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Vehicule.setText("ISTORIC VEHICULE");
+        Vehicule.setBorder(null);
+        Vehicule.setPreferredSize(new java.awt.Dimension(100, 30));
+        Vehicule.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                VehiculeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                VehiculeMouseExited(evt);
+            }
+        });
+        Vehicule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VehiculeActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/VolvoLogo (1).png"))); // NOI18N
+        jLabel2.setMaximumSize(null);
+        jLabel2.setMinimumSize(null);
+        jLabel2.setPreferredSize(null);
+
+        Service.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Service.setText("SERVICE");
+        Service.setBorder(null);
+        Service.setPreferredSize(new java.awt.Dimension(100, 30));
+        Service.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ServiceMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ServiceMouseExited(evt);
+            }
+        });
+        Service.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ServiceActionPerformed(evt);
+            }
+        });
+
+        Stoc.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Stoc.setText("STOC VEHICULE");
+        Stoc.setBorder(null);
+        Stoc.setPreferredSize(new java.awt.Dimension(100, 30));
+        Stoc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                StocMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                StocMouseExited(evt);
+            }
+        });
         Stoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 StocActionPerformed(evt);
+            }
+        });
+
+        Clienti.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Clienti.setText("CLIENTI");
+        Clienti.setBorder(null);
+        Clienti.setPreferredSize(new java.awt.Dimension(100, 30));
+        Clienti.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ClientiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ClientiMouseExited(evt);
+            }
+        });
+        Clienti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClientiActionPerformed(evt);
             }
         });
 
@@ -44,15 +144,29 @@ public class MainMenu extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Stoc)
-                .addContainerGap(322, Short.MAX_VALUE))
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 474, Short.MAX_VALUE)
+                .addComponent(Stoc, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Service, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Clienti, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Vehicule, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(Stoc)
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Stoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Service, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Clienti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Vehicule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(669, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -61,8 +175,71 @@ public class MainMenu extends javax.swing.JPanel {
         parent.showPanel("stoc");
     }//GEN-LAST:event_StocActionPerformed
 
+    private void ServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ServiceActionPerformed
+        // TODO add your handling code here:
+        parent.showPanel("service");
+    }//GEN-LAST:event_ServiceActionPerformed
+
+    private void ClientiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientiActionPerformed
+        // TODO add your handling code here:
+        parent.showPanel("clienti");
+    }//GEN-LAST:event_ClientiActionPerformed
+
+    private void VehiculeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VehiculeActionPerformed
+        // TODO add your handling code here:
+        parent.showPanel("vehicule");
+    }//GEN-LAST:event_VehiculeActionPerformed
+
+    private void StocMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StocMouseEntered
+        // TODO add your handling code here:
+        Stoc.setOpaque(true);
+        Stoc.setBackground(new java.awt.Color(211, 211, 211));
+    }//GEN-LAST:event_StocMouseEntered
+
+    private void StocMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StocMouseExited
+        // TODO add your handling code here:
+        Stoc.setOpaque(false);
+    }//GEN-LAST:event_StocMouseExited
+
+    private void ServiceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ServiceMouseEntered
+        // TODO add your handling code here:
+        Service.setOpaque(true);
+        Service.setBackground(new java.awt.Color(211, 211, 211));
+    }//GEN-LAST:event_ServiceMouseEntered
+
+    private void ClientiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClientiMouseEntered
+        // TODO add your handling code here:
+        Clienti.setOpaque(true);
+        Clienti.setBackground(new java.awt.Color(211, 211, 211));
+    }//GEN-LAST:event_ClientiMouseEntered
+
+    private void VehiculeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VehiculeMouseEntered
+        // TODO add your handling code here:
+        Vehicule.setOpaque(true);
+        Vehicule.setBackground(new java.awt.Color(211, 211, 211));
+    }//GEN-LAST:event_VehiculeMouseEntered
+
+    private void ServiceMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ServiceMouseExited
+        // TODO add your handling code here:
+        Service.setOpaque(false);
+    }//GEN-LAST:event_ServiceMouseExited
+
+    private void ClientiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClientiMouseExited
+        // TODO add your handling code here:
+        Clienti.setOpaque(false);
+    }//GEN-LAST:event_ClientiMouseExited
+
+    private void VehiculeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VehiculeMouseExited
+        // TODO add your handling code here:
+        Vehicule.setOpaque(false);
+    }//GEN-LAST:event_VehiculeMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Clienti;
+    private javax.swing.JButton Service;
     private javax.swing.JButton Stoc;
+    private javax.swing.JButton Vehicule;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
