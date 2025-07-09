@@ -69,6 +69,8 @@ public class ClientiDAO {
         return clientiList;
     }
     
+
+
     public void insertClient(String nume, String localitate) throws SQLException {
         String query = "INSERT INTO clienti (nume, localitate) VALUES (?, ?)";
         PreparedStatement ps = connection.prepareStatement(query);
