@@ -3,9 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.reprezentantavolvo.GUI;
-
+import com.mycompany.reprezentantavolvo.DBConnection;
 import java.awt.*;
-import javax.swing.*;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  *
@@ -18,6 +19,7 @@ public class MainWindow extends javax.swing.JFrame {
     Clienti clientiPanel;
     Service servicePanel;
     Vehicule vehiculePanel;
+    LoginPage loginPanel;
     
     /**
      * Creates new form MainWindow
@@ -34,14 +36,23 @@ public class MainWindow extends javax.swing.JFrame {
         clientiPanel = new Clienti(this);
         servicePanel = new Service(this);
         vehiculePanel = new Vehicule(this);
+        try {
+        Connection conn = DBConnection.getConnection();
+        loginPanel = new LoginPage(this, conn);
+    } catch (SQLException e) {
+        e.printStackTrace();
+        System.exit(1);
+        return;
+    }
         
         contentPanel.add(menuPanel, "menu");
         contentPanel.add(stocPanel, "stoc");
         contentPanel.add(clientiPanel, "clienti");
         contentPanel.add(servicePanel, "service");
         contentPanel.add(vehiculePanel, "vehicule");
+        contentPanel.add(loginPanel, "login");
         
-        showPanel("menu");
+        showPanel("login");
     }
 
     public void showPanel(String name){
@@ -64,8 +75,6 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel1.setAlignmentX(0.0F);
         jPanel1.setAlignmentY(0.0F);
         jPanel1.setMaximumSize(null);
-        jPanel1.setMinimumSize(null);
-        jPanel1.setPreferredSize(null);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -84,9 +93,6 @@ public class MainWindow extends javax.swing.JFrame {
         setMinimumSize(null);
 
         contentPanel.setBackground(new java.awt.Color(255, 255, 255));
-        contentPanel.setMaximumSize(null);
-        contentPanel.setMinimumSize(null);
-        contentPanel.setPreferredSize(null);
         contentPanel.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
