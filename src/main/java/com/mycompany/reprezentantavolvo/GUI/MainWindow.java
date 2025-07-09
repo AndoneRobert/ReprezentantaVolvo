@@ -15,10 +15,10 @@ import java.sql.SQLException;
 public class MainWindow extends javax.swing.JFrame {
 
     MainMenu menuPanel;
-    Stoc stocPanel;
-    Clienti clientiPanel;
-    Service servicePanel;
-    Vehicule vehiculePanel;
+    StocPanel stocPanel;
+    ClientiPanel clientiPanel;
+    ServicePanel servicePanel;
+    VehiculePanel vehiculePanel;
     LoginPage loginPanel;
     
     /**
@@ -28,15 +28,17 @@ public class MainWindow extends javax.swing.JFrame {
         initComponents();
         
         setTitle("Reprezentanta Volvo");
-        setSize(1280, 720);
+        setSize(1300, 790);
         setLocationRelativeTo(null);
         setResizable(false);
         
         menuPanel = new MainMenu(this);
-        stocPanel = new Stoc(this);
-        clientiPanel = new Clienti(this);
-        servicePanel = new Service(this);
-        vehiculePanel = new Vehicule(this);
+        stocPanel = new StocPanel(this);
+
+        servicePanel = new ServicePanel(this);
+        vehiculePanel = new VehiculePanel(this);
+        
+        
         try {
         Connection conn = DBConnection.getConnection();
         loginPanel = new LoginPage(this, conn);
@@ -45,6 +47,14 @@ public class MainWindow extends javax.swing.JFrame {
         System.exit(1);
         return;
     }
+        try{
+            Connection conn = DBConnection.getConnection();
+            clientiPanel = new ClientiPanel(this, conn);
+        } catch(SQLException e){
+            e.printStackTrace();
+            System.exit(1);
+            return;
+        }
         
         contentPanel.add(menuPanel, "menu");
         contentPanel.add(stocPanel, "stoc");
