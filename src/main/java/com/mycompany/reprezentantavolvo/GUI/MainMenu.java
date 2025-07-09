@@ -53,13 +53,13 @@ public class MainMenu extends javax.swing.JPanel {
         Service = new javax.swing.JButton();
         Stoc = new javax.swing.JButton();
         Clienti = new javax.swing.JButton();
+        label1 = new java.awt.Label();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setAlignmentX(0.0F);
         setAlignmentY(0.0F);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMaximumSize(null);
-        setMinimumSize(null);
 
         Vehicule.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Vehicule.setText("ISTORIC VEHICULE");
@@ -138,6 +138,8 @@ public class MainMenu extends javax.swing.JPanel {
             }
         });
 
+        label1.setBackground(new java.awt.Color(0, 0, 153));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,6 +156,7 @@ public class MainMenu extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(Vehicule, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,7 +169,9 @@ public class MainMenu extends javax.swing.JPanel {
                         .addComponent(Service, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Clienti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Vehicule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(669, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(624, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -241,5 +246,6 @@ public class MainMenu extends javax.swing.JPanel {
     private javax.swing.JButton Stoc;
     private javax.swing.JButton Vehicule;
     private javax.swing.JLabel jLabel2;
+    private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 }
