@@ -34,6 +34,7 @@ public class Service extends javax.swing.JPanel {
     private void initComponents() {
 
         Home1 = new javax.swing.JButton();
+        label1 = new java.awt.Label();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -57,6 +58,8 @@ public class Service extends javax.swing.JPanel {
             }
         });
 
+        label1.setBackground(new java.awt.Color(0, 0, 153));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -65,13 +68,16 @@ public class Service extends javax.swing.JPanel {
                 .addGap(488, 488, 488)
                 .addComponent(Home1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(482, Short.MAX_VALUE))
+            .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Home1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(669, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(624, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -94,5 +100,6 @@ public class Service extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Home1;
+    private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 }
