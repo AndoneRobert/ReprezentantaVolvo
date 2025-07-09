@@ -19,6 +19,8 @@ public class Clienti extends javax.swing.JPanel {
         this.parent=parent;
         initComponents();
         
+
+        
         Home1.setBorder(BorderFactory.createEmptyBorder());
         Home1.setContentAreaFilled(false);
         Home1.setFocusPainted(false);
@@ -34,6 +36,11 @@ public class Clienti extends javax.swing.JPanel {
     private void initComponents() {
 
         Home1 = new javax.swing.JButton();
+        label1 = new java.awt.Label();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        clientiTable = new javax.swing.JTable();
+        numeField = new java.awt.TextField();
+        localitateField = new java.awt.TextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -57,13 +64,48 @@ public class Clienti extends javax.swing.JPanel {
             }
         });
 
+        label1.setBackground(new java.awt.Color(0, 0, 153));
+
+        clientiTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(clientiTable);
+
+        numeField.setText("Nume");
+
+        localitateField.setText("Localitate");
+        localitateField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                localitateFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(488, 488, 488)
-                .addComponent(Home1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(488, 488, 488)
+                        .addComponent(Home1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(numeField, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
+                        .addComponent(localitateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(482, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -71,7 +113,18 @@ public class Clienti extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Home1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(669, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(numeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(localitateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -91,8 +144,17 @@ public class Clienti extends javax.swing.JPanel {
         parent.showPanel("menu");
     }//GEN-LAST:event_Home1ActionPerformed
 
+    private void localitateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_localitateFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_localitateFieldActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Home1;
+    private javax.swing.JTable clientiTable;
+    private javax.swing.JScrollPane jScrollPane2;
+    private java.awt.Label label1;
+    private java.awt.TextField localitateField;
+    private java.awt.TextField numeField;
     // End of variables declaration//GEN-END:variables
 }
