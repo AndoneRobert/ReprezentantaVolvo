@@ -5,8 +5,6 @@
 package com.mycompany.reprezentantavolvo.GUI;
 
 import com.mycompany.reprezentantavolvo.AuthDAO;
-import javax.swing.*;
-import java.awt.event.*;
 import java.sql.*;
 /**
  *
