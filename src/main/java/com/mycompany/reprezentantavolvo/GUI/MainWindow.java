@@ -27,6 +27,7 @@ public class MainWindow extends javax.swing.JFrame {
     public MainWindow() {
         initComponents();
         
+        setTitle("Reprezentanta Volvo");
         setSize(1280, 720);
         setLocationRelativeTo(null);
         setResizable(false);
