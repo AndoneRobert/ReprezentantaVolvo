@@ -81,7 +81,7 @@ public class ClientiDAO {
     }
 
     public void updateClient(int codc, String nume, String localitate) throws SQLException {
-        String query = "UPDATE clienti SET nume = ?, localitate = ? WHERE codc = ?";
+        String query = "UPDATE clienti SET nume = ?, localitate = ? WHERE \"CODC\" = ?";
         PreparedStatement ps = connection.prepareStatement(query);
         ps.setString(1, nume);
         ps.setString(2, localitate);
@@ -91,7 +91,7 @@ public class ClientiDAO {
     }
 
         public void deleteClient(int codc) throws SQLException {
-        String query = "DELETE FROM clienti WHERE codc = ?";
+        String query = "DELETE FROM clienti WHERE \"CODC\" = ?";
         PreparedStatement ps = connection.prepareStatement(query);
         ps.setInt(1, codc);
         ps.executeUpdate();
