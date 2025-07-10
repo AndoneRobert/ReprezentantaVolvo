@@ -9,30 +9,31 @@ package com.mycompany.reprezentantavolvo;
  * @author robii
  */
 public class Stoc {
-    private int CODM;
-    private String stare;
-    private int an;
+    private int codm;
     private String model;
+    private int an;
     private String motorizare;
-    private int pret;
-    private int km;
     private String culoare;
+    private int km;
+    private String starea;
+    private int pret;
     private String tip;
     
     
     public Stoc(){
-        CODM = 0;
-        stare = "noua";
+        codm = 0;
         model = "NULL";
+        an = 0;
         motorizare = "NULL";
-        pret = 0;
-        km = 0;
         culoare = "NULL";
+        km = 0;
+        starea = "NULL";
+        pret = 0;
         tip = "NULL";
     }
-    public Stoc(int CODM, String stare, int an, String model, String motorizare, int pret, int km, String culoare, String tip){
-        this.CODM=CODM;
-        this.stare=stare;
+    public Stoc(int codm, String model, int an, String motorizare, String culoare, int km, String starea, int pret, String tip){
+        this.codm = codm;
+        this.starea=starea;
         this.an=an;
         this.model=model;
         this.motorizare=motorizare;
@@ -43,8 +44,8 @@ public class Stoc {
     }
     
     public Stoc(Stoc stoc){
-        this.CODM=stoc.CODM;
-        this.stare=stoc.stare;
+        this.codm=stoc.codm;
+        this.starea=stoc.starea;
         this.an=stoc.an;
         this.model=stoc.model;
         this.motorizare=stoc.motorizare;
@@ -55,17 +56,17 @@ public class Stoc {
     }
     
     public int getCODM(){
-        return CODM;
+        return codm;
     }
     public void setCODM(int CODM){
-        this.CODM=CODM;
+        this.codm=codm;
     }
     
     public String getStare(){
-        return stare;
+        return starea;
     }
     public void setStare(String stare){
-        this.stare=stare;
+        this.starea=starea;
     }
     
     public int getAn(){
@@ -118,6 +119,6 @@ public class Stoc {
     }
             
     public String toString(){
-        return "Vehiculul cu codul "+CODM+" este in stare "+stare+" din anul "+an+". Modelul este "+model+" "+motorizare+" la pretul de "+pret+" euro, are "+km+" culoarea este "+culoare+".";
+        return "Vehiculul cu codul "+codm+" este in stare "+starea+" din anul "+an+". Modelul este "+model+" "+motorizare+" la pretul de "+pret+" euro, are "+km+" culoarea este "+culoare+".";
     }
 }
