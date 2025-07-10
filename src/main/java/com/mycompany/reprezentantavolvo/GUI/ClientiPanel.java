@@ -9,7 +9,7 @@ import com.mycompany.reprezentantavolvo.ClientiDAO;
 
 import java.sql.Connection;
 import java.util.List;
-import javax.swing.BorderFactory;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -75,17 +75,17 @@ public class ClientiPanel extends javax.swing.JPanel {
     }
     
 private void insertClientPopup() {
-    javax.swing.JTextField numeInput = new javax.swing.JTextField();
-    javax.swing.JTextField localitateInput = new javax.swing.JTextField();
+    JTextField numeInput = new JTextField();
+    JTextField localitateInput = new JTextField();
     Object[] fields = {
         "Nume:", numeInput,
         "Localitate:", localitateInput
     };
 
-    int result = javax.swing.JOptionPane.showConfirmDialog(
-        this, fields, "Insert New Client", javax.swing.JOptionPane.OK_CANCEL_OPTION);
+    int result = JOptionPane.showConfirmDialog(
+        this, fields, "Adauga client", JOptionPane.OK_CANCEL_OPTION);
 
-    if (result == javax.swing.JOptionPane.OK_OPTION) {
+    if (result == JOptionPane.OK_OPTION) {
         try {
             String nume = numeInput.getText().trim();
             String localitate = localitateInput.getText().trim();
@@ -95,6 +95,66 @@ private void insertClientPopup() {
             dao.insertClient(nume, localitate);
             loadAllClienti();
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+private void updateClientPopup(){
+    int selectedRow = clientiTable.getSelectedRow();
+    
+    int codc = (int) clientiTable.getValueAt(selectedRow, 0);
+    String numeVechi = (String) clientiTable.getValueAt(selectedRow, 1);
+    String localitateVeche = (String) clientiTable.getValueAt(selectedRow, 2);
+    
+    JTextField numeUpdate = new JTextField(numeVechi);
+    JTextField localitateUpdate = new JTextField(localitateVeche);
+    
+    Object[] fields = {
+        "Nume nou: ", numeUpdate,
+        "Localitate noua: ", localitateUpdate
+    };
+    
+    int result = JOptionPane.showConfirmDialog(
+    this, fields, "Modifica client", JOptionPane.OK_CANCEL_OPTION);
+    
+    if (result == JOptionPane.OK_OPTION){
+        String numeNou = numeUpdate.getText().trim();
+        String localitateNoua = localitateUpdate.getText().trim();
+        
+        if (numeNou.isEmpty() || localitateNoua.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Toate câmpurile trebuie completate!", "Eroare", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try{
+            ClientiDAO dao = new ClientiDAO(conn);
+            dao.updateClient(codc, numeNou, localitateNoua);
+            loadAllClienti();
+        } catch (Exception e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Eroare la actualizarea clientului", "Eroare", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+}
+
+private void deleteClientPopup(){
+    JTextField CODCDelete = new JTextField();
+    Object[] fields = {
+        "CODC: ", CODCDelete
+    };
+    
+    int result = JOptionPane.showConfirmDialog(
+    this, fields, "Sterge client", JOptionPane.OK_CANCEL_OPTION);
+    
+    if (result == JOptionPane.OK_OPTION){
+        try{
+            int CODC = Integer.parseInt(CODCDelete.getText().trim());
+            //if(CODC) return;
+            
+            ClientiDAO dao = new ClientiDAO(conn);
+            dao.deleteClient(CODC);
+            loadAllClienti();
+        } catch(Exception e){
             e.printStackTrace();
         }
     }
@@ -210,6 +270,11 @@ private void insertClientPopup() {
 
         Delete.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Delete.setText("DELETE");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -307,7 +372,13 @@ private void insertClientPopup() {
 
     private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
         // TODO add your handling code here:
+        updateClientPopup();
     }//GEN-LAST:event_UpdateActionPerformed
+
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+        // TODO add your handling code here:
+        deleteClientPopup();
+    }//GEN-LAST:event_DeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
