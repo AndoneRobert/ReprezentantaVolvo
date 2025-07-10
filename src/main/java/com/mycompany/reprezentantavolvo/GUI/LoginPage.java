@@ -6,6 +6,7 @@ package com.mycompany.reprezentantavolvo.GUI;
 
 import com.mycompany.reprezentantavolvo.AuthDAO;
 import java.sql.*;
+import javax.swing.BorderFactory;
 /**
  *
  * @author robii
@@ -23,6 +24,10 @@ public class LoginPage extends javax.swing.JPanel {
         this.conn=conn;
         
         initComponents();
+        
+        connect.setBorder(BorderFactory.createEmptyBorder());
+        connect.setContentAreaFilled(false);
+        connect.setFocusPainted(false);
         
         connect.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +94,14 @@ public class LoginPage extends javax.swing.JPanel {
         connect.setText("CONNECT");
         connect.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         connect.setPreferredSize(new java.awt.Dimension(101, 21));
+        connect.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                connectMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                connectMouseExited(evt);
+            }
+        });
         connect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 connectActionPerformed(evt);
@@ -180,6 +193,17 @@ public class LoginPage extends javax.swing.JPanel {
     private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordActionPerformed
+
+    private void connectMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_connectMouseEntered
+        // TODO add your handling code here:
+        connect.setOpaque(true);
+        connect.setBackground(new java.awt.Color(211, 211, 211));
+    }//GEN-LAST:event_connectMouseEntered
+
+    private void connectMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_connectMouseExited
+        // TODO add your handling code here:
+        connect.setOpaque(false);
+    }//GEN-LAST:event_connectMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
