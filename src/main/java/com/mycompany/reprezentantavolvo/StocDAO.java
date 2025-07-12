@@ -115,7 +115,7 @@ public class StocDAO {
     }
 
         public void deleteStoc(int codm) throws SQLException {
-        String query = "DELETE FROM clienti WHERE \"CODM\" = ?";
+        String query = "DELETE FROM stoc WHERE \"CODM\" = ?";
         PreparedStatement ps = connection.prepareStatement(query);
         ps.setInt(1, codm);
         ps.executeUpdate();
