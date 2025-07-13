@@ -7,7 +7,7 @@ package com.mycompany.reprezentantavolvo.GUI;
 import com.mycompany.reprezentantavolvo.Clienti;
 import com.mycompany.reprezentantavolvo.ClientiDAO;
 
-import java.sql.Connection;
+import java.sql.*;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -123,7 +123,7 @@ private void updateClientPopup(){
         String localitateNoua = localitateUpdate.getText().trim();
         
         if (numeNou.isEmpty() || localitateNoua.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Toate câmpurile trebuie completate!", "Eroare", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Toate campurile trebuie completate!");
             return;
         }
         try{
@@ -132,7 +132,7 @@ private void updateClientPopup(){
             loadAllClienti();
         } catch (Exception e){
             e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Eroare la actualizarea clientului", "Eroare", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Eroare la actualizarea clientului");
         }
     }
 }
@@ -149,7 +149,6 @@ private void deleteClientPopup(){
     if (result == JOptionPane.OK_OPTION){
         try{
             int CODC = Integer.parseInt(CODCDelete.getText().trim());
-            //if(CODC) return;
             
             ClientiDAO dao = new ClientiDAO(conn);
             dao.deleteClient(CODC);
