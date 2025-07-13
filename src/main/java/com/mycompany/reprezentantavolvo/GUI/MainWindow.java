@@ -35,8 +35,23 @@ public class MainWindow extends javax.swing.JFrame {
         menuPanel = new MainMenu(this);
         stocPanel = new StocPanel(this);
 
-        servicePanel = new ServicePanel(this);
+        try{
+        Connection conn = DBConnection.getConnection();
+        servicePanel = new ServicePanel(this, conn);
+        } catch (SQLException e){
+            e.printStackTrace();
+            System.exit(1);
+            return;
+        }
+        
+        try{
+        Connection conn = DBConnection.getConnection();
         vehiculePanel = new VehiculePanel(this);
+        } catch (SQLException e){
+            e.printStackTrace();
+            System.exit(1);
+            return;
+        }
         
         
         try {
