@@ -5,7 +5,7 @@
 package com.mycompany.reprezentantavolvo.GUI;
 
 import javax.swing.*;
-
+import java.awt.*;
 
 
 /**
@@ -198,7 +198,7 @@ public class MainMenu extends javax.swing.JPanel {
     private void StocMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StocMouseEntered
         // TODO add your handling code here:
         Stoc.setOpaque(true);
-        Stoc.setBackground(new java.awt.Color(211, 211, 211));
+        Stoc.setBackground(new Color(211, 211, 211));
     }//GEN-LAST:event_StocMouseEntered
 
     private void StocMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StocMouseExited
@@ -209,19 +209,19 @@ public class MainMenu extends javax.swing.JPanel {
     private void ServiceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ServiceMouseEntered
         // TODO add your handling code here:
         Service.setOpaque(true);
-        Service.setBackground(new java.awt.Color(211, 211, 211));
+        Service.setBackground(new Color(211, 211, 211));
     }//GEN-LAST:event_ServiceMouseEntered
 
     private void ClientiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClientiMouseEntered
         // TODO add your handling code here:
         Clienti.setOpaque(true);
-        Clienti.setBackground(new java.awt.Color(211, 211, 211));
+        Clienti.setBackground(new Color(211, 211, 211));
     }//GEN-LAST:event_ClientiMouseEntered
 
     private void VehiculeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VehiculeMouseEntered
         // TODO add your handling code here:
         Vehicule.setOpaque(true);
-        Vehicule.setBackground(new java.awt.Color(211, 211, 211));
+        Vehicule.setBackground(new Color(211, 211, 211));
     }//GEN-LAST:event_VehiculeMouseEntered
 
     private void ServiceMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ServiceMouseExited
