@@ -38,36 +38,34 @@ public class ServiceDAO {
         return serviceList;
     }
 
-    public List<Service> cautaService(int codveh) throws SQLException {
-        List<Service> serviceList = new ArrayList<>();
-        String query = "SELECT * FROM service WHERE 1=1";
-        List<String> params = new ArrayList<>();
+    public List<Service> cautaService(Integer codveh) throws SQLException {
+    List<Service> serviceList = new ArrayList<>();
+    StringBuilder query = new StringBuilder("SELECT * FROM service WHERE 1=1");
 
-        if (codveh != 0) {
-            params.add("%" + codveh + "%");
-        }
+    PreparedStatement ps;
 
-        PreparedStatement ps = connection.prepareStatement(query);
-        for (int i = 0; i < params.size(); i++) {
-            ps.setString(i + 1, params.get(i));
-        }
-
-        ResultSet rs = ps.executeQuery();
-        while (rs.next()) {
-            int codsGasit = rs.getInt("cods");
-            String diagnosticGasit = rs.getString("diagnostic");
-            int costGasit = rs.getInt("cost");
-            int codvehGasit = rs.getInt("codveh");
-            int codmecGasit = rs.getInt("codmec");
-            serviceList.add(new Service(codsGasit, diagnosticGasit, costGasit, codvehGasit, codmecGasit));
-        }
-
-        rs.close();
-        ps.close();
-        return serviceList;
+    if (codveh != null) {
+        query.append(" AND \"CODVEH\" = ?");
+        ps = connection.prepareStatement(query.toString());
+        ps.setInt(1, codveh);
+    } else {
+        ps = connection.prepareStatement(query.toString());
     }
-    
 
+    ResultSet rs = ps.executeQuery();
+    while (rs.next()) {
+        int codsGasit = rs.getInt("cods");
+        String diagnosticGasit = rs.getString("diagnostic");
+        int costGasit = rs.getInt("cost");
+        int codvehGasit = rs.getInt("codveh");
+        int codmecGasit = rs.getInt("codmec");
+        serviceList.add(new Service(codsGasit, diagnosticGasit, costGasit, codvehGasit, codmecGasit));
+    }
+
+    rs.close();
+    ps.close();
+    return serviceList;
+}
 
     public void insertService(String diagnostic, int cost, int codveh, int codmec) throws SQLException {
         String query = "INSERT INTO service (diagnostic, cost, \"CODVEH\", \"CODMEC\") VALUES (?, ?, ?, ?)";
@@ -81,7 +79,7 @@ public class ServiceDAO {
     }
 
     public void updateService(int cods, String diagnostic, int cost, int codveh, int codmec) throws SQLException {
-        String query = "UPDATE service SET diagnostic = ?, cost = ?, codveh = ?, codmec = ? WHERE \"CODS\" = ?";
+        String query = "UPDATE service SET diagnostic = ?, cost = ?, \"CODVEH\" = ?, \"CODMEC\" = ? WHERE \"CODS\" = ?";
         PreparedStatement ps = connection.prepareStatement(query);
         ps.setString(1, diagnostic);
         ps.setInt(2, cost);
