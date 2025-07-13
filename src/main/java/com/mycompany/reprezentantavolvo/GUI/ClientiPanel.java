@@ -11,6 +11,7 @@ import java.sql.*;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 /**
  *
  * @author robii
@@ -26,6 +27,21 @@ public class ClientiPanel extends javax.swing.JPanel {
         this.parent=parent;
         this.conn=conn;
         initComponents();
+        Cauta.setBorder(BorderFactory.createEmptyBorder());
+        Cauta.setContentAreaFilled(false);
+        Cauta.setFocusPainted(false);
+        
+        Insert.setBorder(BorderFactory.createEmptyBorder());
+        Insert.setContentAreaFilled(false);
+        Insert.setFocusPainted(false);
+        
+        Update.setBorder(BorderFactory.createEmptyBorder());
+        Update.setContentAreaFilled(false);
+        Update.setFocusPainted(false);
+        
+        Delete.setBorder(BorderFactory.createEmptyBorder());
+        Delete.setContentAreaFilled(false);
+        Delete.setFocusPainted(false);
         
         defaultTable = new DefaultTableModel(new Object[]{"CODC","Nume","Localitate"},0){
             @Override
@@ -237,6 +253,14 @@ private void deleteClientPopup(){
 
         Cauta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Cauta.setText("CAUTA");
+        Cauta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                CautaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                CautaMouseExited(evt);
+            }
+        });
         Cauta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CautaActionPerformed(evt);
@@ -252,6 +276,14 @@ private void deleteClientPopup(){
         Insert.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Insert.setText("INSERT");
         Insert.setPreferredSize(new java.awt.Dimension(75, 22));
+        Insert.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                InsertMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                InsertMouseExited(evt);
+            }
+        });
         Insert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 InsertActionPerformed(evt);
@@ -261,6 +293,14 @@ private void deleteClientPopup(){
         Update.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Update.setText("UPDATE");
         Update.setPreferredSize(new java.awt.Dimension(75, 22));
+        Update.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                UpdateMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                UpdateMouseExited(evt);
+            }
+        });
         Update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UpdateActionPerformed(evt);
@@ -269,6 +309,14 @@ private void deleteClientPopup(){
 
         Delete.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Delete.setText("DELETE");
+        Delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                DeleteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                DeleteMouseExited(evt);
+            }
+        });
         Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DeleteActionPerformed(evt);
@@ -378,6 +426,50 @@ private void deleteClientPopup(){
         // TODO add your handling code here:
         deleteClientPopup();
     }//GEN-LAST:event_DeleteActionPerformed
+
+    private void CautaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CautaMouseEntered
+        // TODO add your handling code here:
+        Cauta.setOpaque(true);
+        Cauta.setBackground(new Color(211,211,211));
+    }//GEN-LAST:event_CautaMouseEntered
+
+    private void CautaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CautaMouseExited
+        // TODO add your handling code here:
+        Cauta.setOpaque(false);
+    }//GEN-LAST:event_CautaMouseExited
+
+    private void InsertMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InsertMouseEntered
+        // TODO add your handling code here:
+        Insert.setOpaque(true);
+        Insert.setBackground(new Color(211,211,211));
+    }//GEN-LAST:event_InsertMouseEntered
+
+    private void InsertMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InsertMouseExited
+        // TODO add your handling code here:
+        Insert.setOpaque(false);
+    }//GEN-LAST:event_InsertMouseExited
+
+    private void UpdateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateMouseEntered
+        // TODO add your handling code here:
+        Update.setOpaque(true);
+        Update.setBackground(new Color(211,211,211));
+    }//GEN-LAST:event_UpdateMouseEntered
+
+    private void UpdateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateMouseExited
+        // TODO add your handling code here:
+        Update.setOpaque(false);
+    }//GEN-LAST:event_UpdateMouseExited
+
+    private void DeleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteMouseEntered
+        // TODO add your handling code here:
+        Delete.setOpaque(true);
+        Delete.setBackground(new Color(211,211,211));
+    }//GEN-LAST:event_DeleteMouseEntered
+
+    private void DeleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteMouseExited
+        // TODO add your handling code here:
+        Delete.setOpaque(false);
+    }//GEN-LAST:event_DeleteMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
