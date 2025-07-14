@@ -42,25 +42,12 @@ public class VanzariDAO {
         return vanzariList;
     }
     
-public void insertVanzare(int codm, int codc) throws SQLException {
-    connection.setAutoCommit(false);
-    try {
-        String sql = "INSERT INTO vanzari (\"CODM\", \"CODC\", datav) VALUES (?, ?, CURRENT_DATE)";
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+public void insertVanzari(int codm, int codc) throws SQLException {
+        String query = "INSERT INTO vanzari (\"CODM\", \"CODC\", datav) VALUES (?, ?, CURRENT_DATE)";
+        PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, codm);
             ps.setInt(2, codc);
             ps.executeUpdate();
-        }
-        StocDAO stocDao = new StocDAO(connection);
-        stocDao.markAsSold(codm);
-
-        connection.commit();
-    } catch (SQLException e) {
-        connection.rollback();
-        throw e;
-    } finally {
-        connection.setAutoCommit(true);
+            ps.close();
     }
-}
-
 }
