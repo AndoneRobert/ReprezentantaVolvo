@@ -46,7 +46,7 @@ public class MainWindow extends javax.swing.JFrame {
         
         try{
         Connection conn = DBConnection.getConnection();
-        vehiculePanel = new VehiculePanel(this);
+        vehiculePanel = new VehiculePanel(this, conn);
         } catch (SQLException e){
             e.printStackTrace();
             System.exit(1);
