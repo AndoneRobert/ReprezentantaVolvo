@@ -4,8 +4,13 @@
  */
 package com.mycompany.reprezentantavolvo.GUI;
 
+import com.mycompany.reprezentantavolvo.Vanzari;
+import com.mycompany.reprezentantavolvo.VanzariDAO;
 import javax.swing.*;
 import java.awt.*;
+import java.sql.*;
+import javax.swing.table.DefaultTableModel;
+import java.util.List;
 
 
 /**
@@ -14,11 +19,15 @@ import java.awt.*;
  */
 public class MainMenu extends javax.swing.JPanel {
     private MainWindow parent;
+    private DefaultTableModel defaultTable;
+    private Connection conn;
     /**
      * Creates new form MainMenu
      */
-    public MainMenu(MainWindow parent) {
+    public MainMenu(MainWindow parent, Connection conn) {
+        
         this.parent=parent;
+        this.conn=conn;
         initComponents();
         Stoc.setBorder(BorderFactory.createEmptyBorder());
         Stoc.setContentAreaFilled(false);
@@ -36,8 +45,36 @@ public class MainMenu extends javax.swing.JPanel {
         Vehicule.setContentAreaFilled(false);
         Vehicule.setFocusPainted(false);
         
+        defaultTable = new DefaultTableModel(new Object[]{"CODV","Datav","CODV","CODC"},0){
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
 
+        vanzariTable.setModel(defaultTable);
+        vanzariTable.setRowSelectionAllowed(false);
+        loadAllVanzari();
     }
+    
+    private void loadAllVanzari(){
+        try{
+            VanzariDAO dao = new VanzariDAO(conn);
+            List<Vanzari> vanzari = dao.getAllVanzari();
+            populateTable(vanzari);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    private void populateTable(List<Vanzari> vanzari){
+        defaultTable.setRowCount(0);
+        for(Vanzari v : vanzari){
+            defaultTable.addRow(new Object[]{v.getCODV(),v.getDatav(), v.getCODM(), v.getCODC()});
+    }
+    }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,7 +92,7 @@ public class MainMenu extends javax.swing.JPanel {
         Clienti = new javax.swing.JButton();
         label1 = new java.awt.Label();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        vanzariTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -143,7 +180,7 @@ public class MainMenu extends javax.swing.JPanel {
 
         label1.setBackground(new java.awt.Color(0, 0, 153));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        vanzariTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -154,10 +191,10 @@ public class MainMenu extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(vanzariTable);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("VANZARI");
+        jLabel1.setText("ISTORIC VANZARI");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -184,7 +221,7 @@ public class MainMenu extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(197, 197, 197))
+                .addGap(160, 160, 160))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,7 +317,7 @@ public class MainMenu extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private java.awt.Label label1;
+    private javax.swing.JTable vanzariTable;
     // End of variables declaration//GEN-END:variables
 }
