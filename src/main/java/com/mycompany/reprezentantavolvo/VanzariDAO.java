@@ -5,6 +5,7 @@
 package com.mycompany.reprezentantavolvo;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,89 +23,36 @@ public class VanzariDAO {
         this.connection = connection;
     }
     
-    public List<Vehicule> getAllVehicule() throws SQLException {
-        List<Vehicule> vehiculeList = new ArrayList<>();
-        String query = "SELECT * FROM vehicule";
+    public List<Vanzari> getAllVanzari() throws SQLException {
+        List<Vanzari> vanzariList = new ArrayList<>();
+        String query = "SELECT * FROM vanzari";
         PreparedStatement ps = connection.prepareStatement(query);
         ResultSet rs = ps.executeQuery();
 
         while (rs.next()) {
-            int codveh = rs.getInt("codveh");
-            String model = rs.getString("model");
-            String motorizare = rs.getString("motorizare");
-            int km = rs.getInt("km");
-            int an =  rs.getInt("an");
+            int codv = rs.getInt("codv");
+            Date datav = rs.getDate("datav");
+            int codm = rs.getInt("codm");
             int codc = rs.getInt("codc");
-            vehiculeList.add(new Vehicule(codveh, model, motorizare, km, an, codc));
+            vanzariList.add(new Vanzari(codv, datav, codm, codc));
         }
 
         rs.close();
         ps.close();
-        return vehiculeList;
+        return vanzariList;
     }
 
-    public List<Vehicule> cautaVehicule(String model, String motorizare, int codc) throws SQLException {
-        List<Vehicule> vehiculeList = new ArrayList<>();
-        String query = "SELECT * FROM stoc WHERE 1=1";
-        List<String> params = new ArrayList<>();
-
-        if (model != null && !model.trim().isEmpty()) {
-            query += " AND LOWER(nume) LIKE LOWER(?)";
-            params.add("%" + model.trim() + "%");
-        }
-
-        if (codc != 0) {
-            params.add("%" + codc + "%");
-        }
-        
-
+    public void insertVehicule(Date datav, int CODM, int CODC) throws SQLException {
+        String query = "INSERT INTO vehicule (datav, CODM, CODC) VALUES (?, ?, ?); DELETE FROM stoc WHERE \"CODM\" =?";
         PreparedStatement ps = connection.prepareStatement(query);
-        for (int i = 0; i < params.size(); i++) {
-            ps.setString(i + 1, params.get(i));
-        }
-
-        ResultSet rs = ps.executeQuery();
-        while (rs.next()) {
-            int codvehGasit = rs.getInt("codveh");
-            String modelGasit = rs.getString("model");
-            String motorizareGasit = rs.getString("motorizare");
-            int kmGasit = rs.getInt("km");
-            int anGasit = rs.getInt("an");
-            int codcGasit = rs.getInt("codc");
-            vehiculeList.add(new Vehicule(codvehGasit, modelGasit, motorizareGasit, kmGasit, anGasit, codcGasit));
-        }
-
-        rs.close();
-        ps.close();
-        return vehiculeList;
-    }
-    
-
-
-    public void insertVehicule(String model, String motorizare, int km, int an, int codc) throws SQLException {
-        String query = "INSERT INTO vehicule (model, motorizare, km, an, codc) VALUES (?, ?, ?, ?, ?)";
-        PreparedStatement ps = connection.prepareStatement(query);
-        ps.setString(1, model);
-        ps.setString(2, motorizare);
-        ps.setInt(3, km);
-        ps.setInt(4, an);
-        ps.setInt(5, codc);
+        ps.setDate(1, datav);
+        ps.setInt(2, CODM);
+        ps.setInt(3, CODC);
+        ps.setInt(4, CODM);
         ps.executeUpdate();
         ps.close();
     }
 
-    public void updateVehicule(int codveh, String model, String motorizare, int km, int an, int codc) throws SQLException {
-        String query = "UPDATE vehicule SET model = ?, motorizare = ?, km = ?, an = ?, codc = ? WHERE \"CODVEH\" = ?";
-        PreparedStatement ps = connection.prepareStatement(query);
-        ps.setString(1, model);
-        ps.setString(2, motorizare);
-        ps.setInt(3, km);
-        ps.setInt(4, an);
-        ps.setInt(5, codc);
-        ps.setInt(6, codveh);
-        ps.executeUpdate();
-        ps.close();
-    }
 
         public void deleteVehicule(int codveh) throws SQLException {
         String query = "DELETE FROM vehicule WHERE \"CODVEH\" = ?";
