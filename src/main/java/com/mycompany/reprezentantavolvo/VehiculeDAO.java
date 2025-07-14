@@ -39,46 +39,58 @@ public class VehiculeDAO {
         return vehiculeList;
     }
 
-    public List<Vehicule> cautaVehicule(String model, String motorizare, int codc) throws SQLException {
-        List<Vehicule> vehiculeList = new ArrayList<>();
-        String query = "SELECT * FROM stoc WHERE 1=1";
-        List<String> params = new ArrayList<>();
+public List<Vehicule> cautaVehicule(String model, String motorizare, Integer codc) throws SQLException {
+    List<Vehicule> vehiculeList = new ArrayList<>();
+    StringBuilder query = new StringBuilder("SELECT * FROM vehicule WHERE 1=1");
+    List<Object> params = new ArrayList<>();
 
-        if (model != null && !model.trim().isEmpty()) {
-            query += " AND LOWER(nume) LIKE LOWER(?)";
-            params.add("%" + model.trim() + "%");
-        }
-
-        if (codc != 0) {
-            params.add("%" + codc + "%");
-        }
-        
-
-        PreparedStatement ps = connection.prepareStatement(query);
-        for (int i = 0; i < params.size(); i++) {
-            ps.setString(i + 1, params.get(i));
-        }
-
-        ResultSet rs = ps.executeQuery();
-        while (rs.next()) {
-            int codvehGasit = rs.getInt("codveh");
-            String modelGasit = rs.getString("model");
-            String motorizareGasit = rs.getString("motorizare");
-            int kmGasit = rs.getInt("km");
-            int anGasit = rs.getInt("an");
-            int codcGasit = rs.getInt("codc");
-            vehiculeList.add(new Vehicule(codvehGasit, modelGasit, motorizareGasit, kmGasit, anGasit, codcGasit));
-        }
-
-        rs.close();
-        ps.close();
-        return vehiculeList;
+    if (model != null && !model.trim().isEmpty()) {
+        query.append(" AND LOWER(model) LIKE LOWER(?)");
+        params.add("%" + model.trim() + "%");
     }
+
+    if (motorizare != null && !motorizare.trim().isEmpty()) {
+        query.append(" AND LOWER(motorizare) LIKE LOWER(?)");
+        params.add("%" + motorizare.trim() + "%");
+    }
+
+    if (codc != null) {
+        query.append(" AND \"CODC\" = ?");
+        params.add(codc);
+    }
+
+    PreparedStatement ps = connection.prepareStatement(query.toString());
+
+    for (int i = 0; i < params.size(); i++) {
+        Object param = params.get(i);
+        if (param instanceof String) {
+            ps.setString(i + 1, (String) param);
+        } else if (param instanceof Integer) {
+            ps.setInt(i + 1, (Integer) param);
+        }
+    }
+
+    ResultSet rs = ps.executeQuery();
+    while (rs.next()) {
+        int codvehGasit = rs.getInt("codveh");
+        String modelGasit = rs.getString("model");
+        String motorizareGasit = rs.getString("motorizare");
+        int kmGasit = rs.getInt("km");
+        int anGasit = rs.getInt("an");
+        int codcGasit = rs.getInt("codc");
+        vehiculeList.add(new Vehicule(codvehGasit, modelGasit, motorizareGasit, kmGasit, anGasit, codcGasit));
+    }
+
+    rs.close();
+    ps.close();
+    return vehiculeList;
+}
+
     
 
 
     public void insertVehicule(String model, String motorizare, int km, int an, int codc) throws SQLException {
-        String query = "INSERT INTO vehicule (model, motorizare, km, an, codc) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO vehicule (model, motorizare, km, an, \"CODC\") VALUES (?, ?, ?, ?, ?)";
         PreparedStatement ps = connection.prepareStatement(query);
         ps.setString(1, model);
         ps.setString(2, motorizare);
@@ -90,7 +102,7 @@ public class VehiculeDAO {
     }
 
     public void updateVehicule(int codveh, String model, String motorizare, int km, int an, int codc) throws SQLException {
-        String query = "UPDATE vehicule SET model = ?, motorizare = ?, km = ?, an = ?, codc = ? WHERE \"CODVEH\" = ?";
+        String query = "UPDATE vehicule SET model = ?, motorizare = ?, km = ?, an = ?, \"CODC\" = ? WHERE \"CODVEH\" = ?";
         PreparedStatement ps = connection.prepareStatement(query);
         ps.setString(1, model);
         ps.setString(2, motorizare);
