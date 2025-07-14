@@ -42,6 +42,17 @@ public class StocDAO {
         return stocList;
     }
 
+public void markAsSold(int codm) throws SQLException {
+    String sql = "UPDATE stoc SET vandut = TRUE WHERE codm = ?";
+    try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        ps.setInt(1, codm);
+        ps.executeUpdate();
+        connection.commit();
+    }
+}
+
+
+
     public List<Stoc> cautaStoc(String model, String motorizare) throws SQLException {
         List<Stoc> stocList = new ArrayList<>();
         String query = "SELECT * FROM stoc WHERE 1=1";
