@@ -20,7 +20,6 @@ public class MainWindow extends javax.swing.JFrame {
     ServicePanel servicePanel;
     VehiculePanel vehiculePanel;
     LoginPage loginPanel;
-    
     /**
      * Creates new form MainWindow
      */
@@ -32,8 +31,22 @@ public class MainWindow extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         
-        menuPanel = new MainMenu(this);
-        stocPanel = new StocPanel(this);
+        try{
+            Connection conn = DBConnection.getConnection();
+            menuPanel = new MainMenu(this, conn);
+        }catch(SQLException e){
+            e.printStackTrace();
+            System.exit(1);
+            return;
+        }
+        try{
+            Connection conn = DBConnection.getConnection();
+            stocPanel = new StocPanel(this, conn);
+        } catch(SQLException e){
+            e.printStackTrace();
+            System.exit(1);
+            return;
+        }
 
         try{
         Connection conn = DBConnection.getConnection();
