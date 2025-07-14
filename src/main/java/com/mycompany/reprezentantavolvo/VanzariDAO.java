@@ -41,24 +41,26 @@ public class VanzariDAO {
         ps.close();
         return vanzariList;
     }
+    
+public void insertVanzare(int codm, int codc) throws SQLException {
+    connection.setAutoCommit(false);
+    try {
+        String sql = "INSERT INTO vanzari (\"CODM\", \"CODC\", datav) VALUES (?, ?, CURRENT_DATE)";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, codm);
+            ps.setInt(2, codc);
+            ps.executeUpdate();
+        }
+        StocDAO stocDao = new StocDAO(connection);
+        stocDao.markAsSold(codm);
 
-    public void insertVehicule(Date datav, int CODM, int CODC) throws SQLException {
-        String query = "INSERT INTO vehicule (datav, CODM, CODC) VALUES (?, ?, ?); DELETE FROM stoc WHERE \"CODM\" =?";
-        PreparedStatement ps = connection.prepareStatement(query);
-        ps.setDate(1, datav);
-        ps.setInt(2, CODM);
-        ps.setInt(3, CODC);
-        ps.setInt(4, CODM);
-        ps.executeUpdate();
-        ps.close();
+        connection.commit();
+    } catch (SQLException e) {
+        connection.rollback();
+        throw e;
+    } finally {
+        connection.setAutoCommit(true);
     }
+}
 
-
-        public void deleteVehicule(int codveh) throws SQLException {
-        String query = "DELETE FROM vehicule WHERE \"CODVEH\" = ?";
-        PreparedStatement ps = connection.prepareStatement(query);
-        ps.setInt(1, codveh);
-        ps.executeUpdate();
-        ps.close();
-    }
 }
