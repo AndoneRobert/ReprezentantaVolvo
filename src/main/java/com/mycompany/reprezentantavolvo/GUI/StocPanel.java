@@ -242,7 +242,27 @@ public class StocPanel extends javax.swing.JPanel {
     }
     
     private void insertVanzarePopup(){
+        JTextField CODM = new JTextField();
+        JTextField CODC = new JTextField();
         
+        Object[] fields = {
+            "Cod vehicul: ", CODM,
+            "Cod client: ", CODC
+        };
+        int result = JOptionPane.showConfirmDialog(
+        this,fields,"Adauga",JOptionPane.OK_CANCEL_OPTION);
+        
+        if(result == JOptionPane.OK_OPTION){
+            try{
+                int codm = Integer.parseInt(CODM.getText().trim());
+                int codc = Integer.parseInt(CODC.getText().trim());
+                
+                VanzariDAO dao = new VanzariDAO(conn);
+                dao.insertVanzari(codm, codc);
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+        }
     }
 
 
