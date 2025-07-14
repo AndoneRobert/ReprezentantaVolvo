@@ -10,25 +10,29 @@ import java.sql.Date;
  */
 public class Vanzari {
     private int CODV;
-    private Date data_vanzarii;
-    private String localitate;
+    private Date datav;
+    private int CODM;
+    private int CODC;
     
     public Vanzari(){
         CODV=0;
-        data_vanzarii=Date.valueOf("2025-01-01");
-        localitate="NULL";
+        datav=Date.valueOf("2025-01-01");
+        CODM=0;
+        CODC=0;
     }
     
-    public Vanzari(int CODV, Date data_vanzarii, String localitate){
+    public Vanzari(int CODV, Date datav, int CODM, int CODC){
         this.CODV=CODV;
-        this.data_vanzarii=data_vanzarii;
-        this.localitate=localitate;
+        this.datav=datav;
+        this.CODM=CODM;
+        this.CODC=CODC;
     }
     
     public Vanzari(Vanzari vanzari){
         this.CODV=vanzari.CODV;
-        this.data_vanzarii=vanzari.data_vanzarii;
-        this.localitate=vanzari.localitate;
+        this.datav=vanzari.datav;
+        this.CODM=vanzari.CODM;
+        this.CODC=vanzari.CODC;
     }
     
     public int getCODV(){
@@ -38,17 +42,24 @@ public class Vanzari {
         this.CODV=CODV;
     }
     
-    public Date getDataVanzarii(){
-        return data_vanzarii;
+    public Date getDatav(){
+        return datav;
     }
-    public void setDataVanzarii(Date data_vanzarii){
-        this.data_vanzarii=data_vanzarii;
+    public void setDatav(Date datav){
+        this.datav=datav;
     }
     
-    public String getLocalitate(){
-        return localitate;
+    public int getCODM(){
+        return CODM;
     }
-    public void setLocalitate(String localitate){
-        this.localitate=localitate;
+    public void setCODM(int CODM){
+        this.CODM=CODM;
+    }
+    
+    public int getCODC(){
+        return CODC;
+    }
+    public void setCODC(int CODC){
+        this.CODC=CODC;
     }
 }
