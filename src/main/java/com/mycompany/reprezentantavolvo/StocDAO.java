@@ -48,12 +48,12 @@ public class StocDAO {
         List<String> params = new ArrayList<>();
 
         if (model != null && !model.trim().isEmpty()) {
-            query += " AND LOWER(nume) LIKE LOWER(?)";
+            query += " AND LOWER(model) LIKE LOWER(?)";
             params.add("%" + model.trim() + "%");
         }
 
         if (motorizare != null && !motorizare.trim().isEmpty()) {
-            query += " AND LOWER(localitate) LIKE LOWER(?)";
+            query += " AND LOWER(motorizare) LIKE LOWER(?)";
             params.add("%" + motorizare.trim() + "%");
         }
 
