@@ -167,12 +167,12 @@ public class StocPanel extends javax.swing.JPanel {
         String tipVechi = (String) stocTable.getValueAt(selectedRow, 8);
         
         JTextField modelUpdate = new JTextField(modelVechi);
-        JTextField anUpdate = new JTextField(anVechi);
+        JTextField anUpdate = new JTextField(String.valueOf(anVechi));
         JTextField motorizareUpdate = new JTextField(motorizareVechi);
         JTextField culoareUpdate = new JTextField(culoareVechi);
-        JTextField kmUpdate = new JTextField(kmVechi);
+        JTextField kmUpdate = new JTextField(String.valueOf(kmVechi));
         JTextField stareUpdate = new JTextField(stareVechi);
-        JTextField pretUpdate = new JTextField(pretVechi);
+        JTextField pretUpdate = new JTextField(String.valueOf(pretVechi));
         JTextField tipUpdate = new JTextField(tipVechi);
         
         Object[] fields = {
