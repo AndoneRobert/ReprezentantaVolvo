@@ -4,13 +4,10 @@
  */
 package com.mycompany.reprezentantavolvo.GUI;
 
-import com.mycompany.reprezentantavolvo.Vanzari;
-import com.mycompany.reprezentantavolvo.VanzariDAO;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
-import java.util.List;
 
 
 /**
@@ -45,36 +42,27 @@ public class MainMenu extends javax.swing.JPanel {
         Vehicule.setContentAreaFilled(false);
         Vehicule.setFocusPainted(false);
         
-        defaultTable = new DefaultTableModel(new Object[]{"CODV","Datav","CODV","CODC"},0){
+
+        ImageIcon originalIcon = new ImageIcon(getClass().getResource("/images/volvo-xc90.jpg"));
+        int labelWidth = PozaXC90.getWidth();
+        int labelHeight = PozaXC90.getHeight();
+        if (labelWidth == 0 || labelHeight == 0) {
+            labelWidth = 1280;
+            labelHeight = 650;
+        }
+
+        Image scaledImage = originalIcon.getImage().getScaledInstance(labelWidth, labelHeight, Image.SCALE_SMOOTH);
+        PozaXC90.setIcon(new ImageIcon(scaledImage));
+        PozaXC90.setText("");
+        
+        defaultTable = new DefaultTableModel(new Object[]{"CODV","Datav","CODM","CODC"},0){
             @Override
             public boolean isCellEditable(int row, int column){
                 return false;
             }
         };
 
-        vanzariTable.setModel(defaultTable);
-        vanzariTable.setRowSelectionAllowed(false);
-        loadAllVanzari();
     }
-    
-    private void loadAllVanzari(){
-        try{
-            VanzariDAO dao = new VanzariDAO(conn);
-            List<Vanzari> vanzari = dao.getAllVanzari();
-            populateTable(vanzari);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-    
-    private void populateTable(List<Vanzari> vanzari){
-        defaultTable.setRowCount(0);
-        for(Vanzari v : vanzari){
-            defaultTable.addRow(new Object[]{v.getCODV(),v.getDatav(), v.getCODM(), v.getCODC()});
-    }
-    }
-    
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -91,9 +79,7 @@ public class MainMenu extends javax.swing.JPanel {
         Stoc = new javax.swing.JButton();
         Clienti = new javax.swing.JButton();
         label1 = new java.awt.Label();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        vanzariTable = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        PozaXC90 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setAlignmentX(0.0F);
@@ -101,9 +87,12 @@ public class MainMenu extends javax.swing.JPanel {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMaximumSize(null);
 
-        Vehicule.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Vehicule.setText("ISTORIC VEHICULE");
+        Vehicule.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        Vehicule.setText("VEHICULE");
+        Vehicule.setToolTipText("");
         Vehicule.setBorder(null);
+        Vehicule.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        Vehicule.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         Vehicule.setPreferredSize(new java.awt.Dimension(100, 30));
         Vehicule.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -124,7 +113,7 @@ public class MainMenu extends javax.swing.JPanel {
         jLabel2.setMinimumSize(null);
         jLabel2.setPreferredSize(null);
 
-        Service.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Service.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         Service.setText("SERVICE");
         Service.setBorder(null);
         Service.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -142,7 +131,7 @@ public class MainMenu extends javax.swing.JPanel {
             }
         });
 
-        Stoc.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Stoc.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         Stoc.setText("STOC VEHICULE");
         Stoc.setBorder(null);
         Stoc.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -160,7 +149,7 @@ public class MainMenu extends javax.swing.JPanel {
             }
         });
 
-        Clienti.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Clienti.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         Clienti.setText("CLIENTI");
         Clienti.setBorder(null);
         Clienti.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -180,21 +169,7 @@ public class MainMenu extends javax.swing.JPanel {
 
         label1.setBackground(new java.awt.Color(0, 0, 153));
 
-        vanzariTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(vanzariTable);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("ISTORIC VANZARI");
+        PozaXC90.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -203,25 +178,17 @@ public class MainMenu extends javax.swing.JPanel {
             .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 474, Short.MAX_VALUE)
-                        .addComponent(Stoc, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Service, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Clienti, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Vehicule, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(160, 160, 160))
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 507, Short.MAX_VALUE)
+                .addComponent(Stoc, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Service, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Clienti, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Vehicule, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
+            .addComponent(PozaXC90, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,16 +197,14 @@ public class MainMenu extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Stoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Service, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Clienti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Vehicule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Stoc, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Service, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Vehicule, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Clienti, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(PozaXC90, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -311,13 +276,11 @@ public class MainMenu extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Clienti;
+    private javax.swing.JLabel PozaXC90;
     private javax.swing.JButton Service;
     private javax.swing.JButton Stoc;
     private javax.swing.JButton Vehicule;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private java.awt.Label label1;
-    private javax.swing.JTable vanzariTable;
     // End of variables declaration//GEN-END:variables
 }
