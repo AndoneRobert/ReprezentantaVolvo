@@ -428,7 +428,7 @@ public class ServicePanel extends javax.swing.JPanel {
         serviceTable.setGridColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(serviceTable);
 
-        Cauta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Cauta.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         Cauta.setText("CAUTA");
         Cauta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -444,7 +444,7 @@ public class ServicePanel extends javax.swing.JPanel {
             }
         });
 
-        Insert.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Insert.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         Insert.setText("INSERT");
         Insert.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -460,7 +460,7 @@ public class ServicePanel extends javax.swing.JPanel {
             }
         });
 
-        Update.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Update.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         Update.setText("UPDATE");
         Update.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -476,7 +476,7 @@ public class ServicePanel extends javax.swing.JPanel {
             }
         });
 
-        Delete.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Delete.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         Delete.setText("DELETE");
         Delete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -505,10 +505,11 @@ public class ServicePanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(mecaniciTable);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel1.setText("MECANICI");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        mCauta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        mCauta.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         mCauta.setText("CAUTA");
         mCauta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -524,7 +525,7 @@ public class ServicePanel extends javax.swing.JPanel {
             }
         });
 
-        mInsert.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        mInsert.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         mInsert.setText("INSERT");
         mInsert.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -540,7 +541,7 @@ public class ServicePanel extends javax.swing.JPanel {
             }
         });
 
-        mUpdate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        mUpdate.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         mUpdate.setText("UPDATE");
         mUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -556,7 +557,7 @@ public class ServicePanel extends javax.swing.JPanel {
             }
         });
 
-        mDelete.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        mDelete.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         mDelete.setText("DELETE");
         mDelete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -572,7 +573,7 @@ public class ServicePanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel2.setText("REPARATII");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -582,28 +583,20 @@ public class ServicePanel extends javax.swing.JPanel {
             .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 759, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(488, 488, 488)
-                                .addComponent(Home1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(Cauta)
-                                .addGap(18, 18, 18)
-                                .addComponent(Insert)
-                                .addGap(18, 18, 18)
-                                .addComponent(Update)
-                                .addGap(18, 18, 18)
-                                .addComponent(Delete)))
-                        .addGap(0, 18, Short.MAX_VALUE)))
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(Cauta)
+                        .addGap(18, 18, 18)
+                        .addComponent(Insert)
+                        .addGap(18, 18, 18)
+                        .addComponent(Update)
+                        .addGap(18, 18, 18)
+                        .addComponent(Delete)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
@@ -613,9 +606,14 @@ public class ServicePanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(mUpdate)
                         .addGap(18, 18, 18)
-                        .addComponent(mDelete))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                        .addComponent(mDelete)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2))
+                .addGap(20, 20, 20))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(488, 488, 488)
+                .addComponent(Home1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -625,21 +623,23 @@ public class ServicePanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Cauta)
-                    .addComponent(Insert)
-                    .addComponent(Update)
-                    .addComponent(Delete)
-                    .addComponent(jLabel1)
-                    .addComponent(mCauta)
-                    .addComponent(mInsert)
-                    .addComponent(mUpdate)
-                    .addComponent(mDelete)
-                    .addComponent(jLabel2))
-                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Cauta)
+                        .addComponent(Insert)
+                        .addComponent(Update)
+                        .addComponent(Delete)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(mCauta)
+                        .addComponent(mInsert)
+                        .addComponent(mUpdate)
+                        .addComponent(mDelete)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
