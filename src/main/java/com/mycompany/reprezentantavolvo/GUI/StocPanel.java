@@ -6,8 +6,6 @@ package com.mycompany.reprezentantavolvo.GUI;
 
 import com.mycompany.reprezentantavolvo.Stoc;
 import com.mycompany.reprezentantavolvo.StocDAO;
-import com.mycompany.reprezentantavolvo.VanzariDAO;
-import com.mycompany.reprezentantavolvo.Vanzari;
 import java.sql.*;
 import javax.swing.*;
 import java.awt.*;
@@ -52,9 +50,6 @@ public class StocPanel extends javax.swing.JPanel {
         Delete.setContentAreaFilled(false);
         Delete.setFocusPainted(false);
         
-        Vanzare.setBorder(BorderFactory.createEmptyBorder());
-        Vanzare.setContentAreaFilled(false);
-        Vanzare.setFocusPainted(false);
         
         defaultTable = new DefaultTableModel(new Object[]{"CODM", "Model", "An", "Motorizare","Culoare","KM","Starea","Pret","Tip"},0){
             @Override
@@ -241,30 +236,6 @@ public class StocPanel extends javax.swing.JPanel {
                 }
     }
     
-    private void insertVanzarePopup(){
-        JTextField CODM = new JTextField();
-        JTextField CODC = new JTextField();
-        
-        Object[] fields = {
-            "Cod vehicul: ", CODM,
-            "Cod client: ", CODC
-        };
-        int result = JOptionPane.showConfirmDialog(
-        this,fields,"Adauga",JOptionPane.OK_CANCEL_OPTION);
-        
-        if(result == JOptionPane.OK_OPTION){
-            try{
-                int codm = Integer.parseInt(CODM.getText().trim());
-                int codc = Integer.parseInt(CODC.getText().trim());
-                
-                VanzariDAO dao = new VanzariDAO(conn);
-                dao.insertVanzari(codm, codc);
-            } catch(Exception e){
-                e.printStackTrace();
-            }
-        }
-    }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -284,7 +255,6 @@ public class StocPanel extends javax.swing.JPanel {
         Delete = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         stocTable = new javax.swing.JTable();
-        Vanzare = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -310,10 +280,10 @@ public class StocPanel extends javax.swing.JPanel {
 
         label1.setBackground(new java.awt.Color(0, 0, 153));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel1.setText("STOC");
 
-        Cauta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Cauta.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         Cauta.setText("CAUTA");
         Cauta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -329,7 +299,7 @@ public class StocPanel extends javax.swing.JPanel {
             }
         });
 
-        Insert.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Insert.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         Insert.setText("INSERT");
         Insert.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -345,7 +315,7 @@ public class StocPanel extends javax.swing.JPanel {
             }
         });
 
-        Update.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Update.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         Update.setText("UPDATE");
         Update.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -361,7 +331,7 @@ public class StocPanel extends javax.swing.JPanel {
             }
         });
 
-        Delete.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Delete.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         Delete.setText("DELETE");
         Delete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -390,22 +360,6 @@ public class StocPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(stocTable);
 
-        Vanzare.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        Vanzare.setText("VANZARE");
-        Vanzare.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                VanzareMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                VanzareMouseExited(evt);
-            }
-        });
-        Vanzare.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VanzareActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -426,13 +380,11 @@ public class StocPanel extends javax.swing.JPanel {
                 .addComponent(Update)
                 .addGap(18, 18, 18)
                 .addComponent(Delete)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Vanzare)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -447,10 +399,9 @@ public class StocPanel extends javax.swing.JPanel {
                     .addComponent(Cauta)
                     .addComponent(Insert)
                     .addComponent(Update)
-                    .addComponent(Delete)
-                    .addComponent(Vanzare))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
+                    .addComponent(Delete))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -535,22 +486,6 @@ public class StocPanel extends javax.swing.JPanel {
         deleteStocPopup();
     }//GEN-LAST:event_DeleteActionPerformed
 
-    private void VanzareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VanzareActionPerformed
-        // TODO add your handling code here:
-        insertVanzarePopup();
-    }//GEN-LAST:event_VanzareActionPerformed
-
-    private void VanzareMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VanzareMouseEntered
-        // TODO add your handling code here:
-        Vanzare.setOpaque(true);
-        Vanzare.setBackground(new Color(211,211,211));
-    }//GEN-LAST:event_VanzareMouseEntered
-
-    private void VanzareMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VanzareMouseExited
-        // TODO add your handling code here:
-        Vanzare.setOpaque(false);
-    }//GEN-LAST:event_VanzareMouseExited
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cauta;
@@ -558,7 +493,6 @@ public class StocPanel extends javax.swing.JPanel {
     private javax.swing.JButton Home;
     private javax.swing.JButton Insert;
     private javax.swing.JButton Update;
-    private javax.swing.JButton Vanzare;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private java.awt.Label label1;
