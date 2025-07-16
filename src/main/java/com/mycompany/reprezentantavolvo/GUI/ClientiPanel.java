@@ -99,7 +99,7 @@ private void insertClientPopup() {
     };
 
     int result = JOptionPane.showConfirmDialog(
-        this, fields, "Adauga client", JOptionPane.OK_CANCEL_OPTION);
+        this, fields, "Adauga", JOptionPane.OK_CANCEL_OPTION);
 
     if (result == JOptionPane.OK_OPTION) {
         try {
@@ -160,7 +160,7 @@ private void deleteClientPopup(){
     };
     
     int result = JOptionPane.showConfirmDialog(
-    this, fields, "Sterge client", JOptionPane.OK_CANCEL_OPTION);
+    this, fields, "Sterge", JOptionPane.OK_CANCEL_OPTION);
     
     if (result == JOptionPane.OK_OPTION){
         try{
