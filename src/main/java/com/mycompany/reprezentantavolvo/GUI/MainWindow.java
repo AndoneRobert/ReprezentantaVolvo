@@ -24,74 +24,38 @@ public class MainWindow extends javax.swing.JFrame {
      * Creates new form MainWindow
      */
     public MainWindow() {
-        initComponents();
-        
-        setTitle("Reprezentanta Volvo");
-        setSize(1300, 790);
-        setLocationRelativeTo(null);
-        setResizable(false);
-        
-        try{
-            Connection conn = DBConnection.getConnection();
-            menuPanel = new MainMenu(this, conn);
-        }catch(SQLException e){
-            e.printStackTrace();
-            System.exit(1);
-            return;
-        }
-        try{
-            Connection conn = DBConnection.getConnection();
-            stocPanel = new StocPanel(this, conn);
-        } catch(SQLException e){
-            e.printStackTrace();
-            System.exit(1);
-            return;
-        }
-
-        try{
-        Connection conn = DBConnection.getConnection();
-        servicePanel = new ServicePanel(this, conn);
-        } catch (SQLException e){
-            e.printStackTrace();
-            System.exit(1);
-            return;
-        }
-        
-        try{
-        Connection conn = DBConnection.getConnection();
-        vehiculePanel = new VehiculePanel(this, conn);
-        } catch (SQLException e){
-            e.printStackTrace();
-            System.exit(1);
-            return;
-        }
-        
-        
-        try {
-        Connection conn = DBConnection.getConnection();
-        loginPanel = new LoginPage(this, conn);
+      initComponents();
+    
+    setTitle("Reprezentanta Volvo");
+    setSize(1280, 720);
+    setLocationRelativeTo(null);
+    setResizable(false);
+    
+    Connection conn = null;
+    try {
+        conn = DBConnection.getConnection();
     } catch (SQLException e) {
         e.printStackTrace();
         System.exit(1);
         return;
     }
-        try{
-            Connection conn = DBConnection.getConnection();
-            clientiPanel = new ClientiPanel(this, conn);
-        } catch(SQLException e){
-            e.printStackTrace();
-            System.exit(1);
-            return;
-        }
-        
-        contentPanel.add(menuPanel, "menu");
-        contentPanel.add(stocPanel, "stoc");
-        contentPanel.add(clientiPanel, "clienti");
-        contentPanel.add(servicePanel, "service");
-        contentPanel.add(vehiculePanel, "vehicule");
-        contentPanel.add(loginPanel, "login");
-        
-        showPanel("login");
+    
+    menuPanel = new MainMenu(this, conn);
+    stocPanel = new StocPanel(this, conn);
+    servicePanel = new ServicePanel(this, conn);
+    vehiculePanel = new VehiculePanel(this, conn);
+    loginPanel = new LoginPage(this, conn);
+    clientiPanel = new ClientiPanel(this, conn);
+    
+    
+    contentPanel.add(menuPanel, "menu");
+    contentPanel.add(stocPanel, "stoc");
+    contentPanel.add(clientiPanel, "clienti");
+    contentPanel.add(servicePanel, "service");
+    contentPanel.add(vehiculePanel, "vehicule");
+    contentPanel.add(loginPanel, "login");
+    
+    showPanel("login");
     }
 
     public void showPanel(String name){
