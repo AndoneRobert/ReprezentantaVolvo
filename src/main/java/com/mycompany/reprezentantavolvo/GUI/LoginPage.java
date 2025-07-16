@@ -5,8 +5,10 @@
 package com.mycompany.reprezentantavolvo.GUI;
 
 import com.mycompany.reprezentantavolvo.AuthDAO;
+import java.awt.Image;
 import java.sql.*;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 /**
  *
  * @author robii
@@ -29,6 +31,18 @@ public class LoginPage extends javax.swing.JPanel {
         connect.setContentAreaFilled(false);
         connect.setFocusPainted(false);
         
+        ImageIcon originalIcon = new ImageIcon(getClass().getResource("/images/volvo_car.jpg"));
+        int labelWidth = PozaV90.getWidth();
+        int labelHeight = PozaV90.getHeight();
+
+        if (labelWidth == 0 || labelHeight == 0) {
+            labelWidth = 1280;
+            labelHeight = 630;
+        }
+        Image scaledImage = originalIcon.getImage().getScaledInstance(labelWidth, labelHeight, Image.SCALE_SMOOTH);
+        PozaV90.setIcon(new ImageIcon(scaledImage));
+        PozaV90.setText("");
+        
         connect.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             String user = username.getText().trim();
@@ -37,14 +51,14 @@ public class LoginPage extends javax.swing.JPanel {
             try {
                 AuthDAO authDAO = new AuthDAO(conn);
                 if (authDAO.auth(user, pass)) {
-                    errorPane.setText(""); // Clear errors
-                    parent.showPanel("menu"); // Go to menu panel
+                    errorPane.setText("");
+                    parent.showPanel("menu");
                 } else {
-                    errorPane.setText("Invalid username or password.");
+                    errorPane.setText("Username sau parola invalide.");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                errorPane.setText("Database error occurred.");
+                errorPane.setText("Eroare baza de date.");
             }
         }
     });
@@ -69,7 +83,7 @@ public class LoginPage extends javax.swing.JPanel {
         password = new javax.swing.JPasswordField();
         label2 = new java.awt.Label();
         label3 = new java.awt.Label();
-        jLabel1 = new javax.swing.JLabel();
+        PozaV90 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -90,9 +104,11 @@ public class LoginPage extends javax.swing.JPanel {
             }
         });
 
-        connect.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        connect.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         connect.setText("CONNECT");
         connect.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        connect.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        connect.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         connect.setPreferredSize(new java.awt.Dimension(101, 21));
         connect.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -123,13 +139,13 @@ public class LoginPage extends javax.swing.JPanel {
             }
         });
 
-        label2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        label2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         label2.setText("USERNAME");
 
-        label3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        label3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         label3.setText("PASSWORD");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/volvo-xc90 (3).jpg"))); // NOI18N
+        PozaV90.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -138,24 +154,22 @@ public class LoginPage extends javax.swing.JPanel {
             .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 267, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(connect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                        .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(connect, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34))
+            .addComponent(PozaV90, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,17 +182,16 @@ public class LoginPage extends javax.swing.JPanel {
                             .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(username, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(connect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(connect, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))
                 .addGap(13, 13, 13)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 613, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 0, 0)
+                .addComponent(PozaV90, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -207,9 +220,9 @@ public class LoginPage extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel PozaV90;
     private javax.swing.JButton connect;
     private javax.swing.JTextPane errorPane;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private java.awt.Label label1;
