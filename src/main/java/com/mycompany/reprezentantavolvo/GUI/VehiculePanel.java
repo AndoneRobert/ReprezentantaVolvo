@@ -262,10 +262,10 @@ private void cautaVehiculePopup(){
 
         label1.setBackground(new java.awt.Color(0, 0, 153));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel2.setText("VEHICULE");
 
-        Cauta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Cauta.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         Cauta.setText("CAUTA");
         Cauta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -281,7 +281,7 @@ private void cautaVehiculePopup(){
             }
         });
 
-        Insert.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Insert.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         Insert.setText("INSERT");
         Insert.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -297,7 +297,7 @@ private void cautaVehiculePopup(){
             }
         });
 
-        Update.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Update.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         Update.setText("UPDATE");
         Update.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -313,7 +313,7 @@ private void cautaVehiculePopup(){
             }
         });
 
-        Delete.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Delete.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         Delete.setText("DELETE");
         Delete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -365,11 +365,11 @@ private void cautaVehiculePopup(){
                                 .addComponent(Update)
                                 .addGap(18, 18, 18)
                                 .addComponent(Delete)))
-                        .addGap(0, 476, Short.MAX_VALUE))
+                        .addGap(0, 462, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1)))
-                .addContainerGap())
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -385,8 +385,8 @@ private void cautaVehiculePopup(){
                     .addComponent(Insert)
                     .addComponent(Update)
                     .addComponent(Delete))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
